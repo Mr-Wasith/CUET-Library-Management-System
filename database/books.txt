@@ -1,0 +1,2 @@
+1|Machine Learning|Aurelien|2|2
+2|Introduction to Algorithms|Thomas H. Cormen|10|10

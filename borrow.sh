@@ -13,16 +13,16 @@ borrow_book() {
     fi
 
     today=$(date +%F)
-    due=$(date -d "+30 days" +%F)
+    due=$(date -d "+7 days" +%F)
 
     echo "$CURRENT_STUDENT|$bid|$today|$due|Borrowed" >> "$BORROW_FILE"
-    echo "$CURRENT_STUDENT borrowed $bid on $today" >> "$HISTORY_FILE"
+    echo "$CURRENT_STUDENT borrowed Book $bid on $today" >> "$HISTORY_FILE"
 
     awk -F'|' -v id="$bid" \
     'BEGIN{OFS="|"} $1==id{$5--}1' \
     "$BOOK_FILE" > temp && mv temp "$BOOK_FILE"
 
-    echo "Book Borrowed!"
+    echo "Book Borrowed Successfully!"
 }
 
 return_book() {
@@ -30,19 +30,41 @@ return_book() {
 
     today=$(date +%F)
 
-    awk -F'|' -v sid="$CURRENT_STUDENT" -v bid="$bid" -v today="$today" \
-    'BEGIN{OFS="|"} $1==sid && $2==bid && $5=="Borrowed" {$5="Returned"}1' \
-    "$BORROW_FILE" > temp && mv temp "$BORROW_FILE"
+    updated=$(awk -F'|' -v sid="$CURRENT_STUDENT" -v bid="$bid" -v today="$today" '
+    BEGIN{OFS="|"; found=0}
+    $1==sid && $2==bid && $5=="Borrowed" {
+        $5="Returned"
+        found=1
+    }
+    {print}
+    END{ if(found==0) exit 1 }
+    ' "$BORROW_FILE" > temp)
+
+    if [ $? -ne 0 ]; then
+        echo "No such borrowed book found."
+        rm -f temp
+        return
+    fi
+
+    mv temp "$BORROW_FILE"
 
     awk -F'|' -v id="$bid" \
     'BEGIN{OFS="|"} $1==id{$5++}1' \
     "$BOOK_FILE" > temp && mv temp "$BOOK_FILE"
 
-    echo "$CURRENT_STUDENT returned $bid on $today" >> "$HISTORY_FILE"
+    echo "$CURRENT_STUDENT returned Book $bid on $today" >> "$HISTORY_FILE"
 
-    echo "Book Returned!"
+    echo "Book Returned Successfully!"
 }
 
 view_borrowed_books() {
-    grep "^$CURRENT_STUDENT|" "$BORROW_FILE"
+
+    result=$(grep "^$CURRENT_STUDENT|" "$BORROW_FILE")
+
+    if [ -z "$result" ]; then
+        echo "No borrowed books found."
+    else
+        echo "StudentID | BookID | BorrowDate | DueDate | Status"
+        echo "$result"
+    fi
 }

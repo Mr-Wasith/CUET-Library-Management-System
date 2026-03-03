@@ -16,23 +16,43 @@ calculate_fine() {
 }
 
 student_fine() {
-    grep "^$CURRENT_STUDENT|" "$BORROW_FILE" | while IFS='|' read sid bid bdate ddate status
+
+    found=0
+
+    while IFS='|' read sid bid bdate ddate status
     do
-        if [ "$status" = "Borrowed" ]; then
+        if [ "$sid" = "$CURRENT_STUDENT" ] && [ "$status" = "Borrowed" ]; then
             fine=$(calculate_fine "$ddate")
-            echo "Book: $bid | Fine: $fine"
+
+            if [ "$fine" -gt 0 ]; then
+                echo "Book: $bid | Fine: $fine"
+                found=1
+            fi
         fi
-    done
+    done < "$BORROW_FILE"
+
+    if [ $found -eq 0 ]; then
+        echo "No dues found."
+    fi
 }
 
 admin_overdue_list() {
+
+    found=0
+
     while IFS='|' read sid bid bdate ddate status
     do
         if [ "$status" = "Borrowed" ]; then
             fine=$(calculate_fine "$ddate")
+
             if [ "$fine" -gt 0 ]; then
-                echo "Student: $sid Book: $bid Fine: $fine"
+                echo "Student: $sid | Book: $bid | Fine: $fine"
+                found=1
             fi
         fi
     done < "$BORROW_FILE"
+
+    if [ $found -eq 0 ]; then
+        echo "No overdue books found."
+    fi
 }

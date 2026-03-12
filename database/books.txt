@@ -1,3 +1,5 @@
 1|Machine Learning|Aurelien|2|2
 2|Introduction to Algorithms|Thomas H. Cormen|10|10
-1|Intro to Python|ABCD|10|10
+3|Intro to Python|ABCD|10|10
+4|Operating System Concepts|Silberschatz|5|5
+5|Computer Networks|Andrew Tanenbaum|7|7

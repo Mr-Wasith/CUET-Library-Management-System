@@ -1,0 +1,6 @@
+1001|1|Very helpful book for understanding machine learning basics.
+2204026|3|Very helpful book for learning machine learning concepts
+2204036|2|Good explanations and examples
+2204056|1|Easy to understand for beginners
+2204048|4|Useful reference for data science students
+2204070|5|Clear concepts and practical examples

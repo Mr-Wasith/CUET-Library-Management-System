@@ -22,7 +22,8 @@ admin_menu() {
         echo "5. Search Book"
         echo "6. View Borrowed Books"
         echo "7. View Overdue Books"
-        echo "8. Logout"
+        echo "8. View Reviews"
+        echo "9. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -34,7 +35,8 @@ admin_menu() {
             5) search_book ;;
             6) view_borrowed_books ;;
             7) admin_overdue_list ;;
-            8) echo "Logging out..."; break ;;
+            8) view_reviews ;;
+            9) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
@@ -54,7 +56,8 @@ student_menu() {
         echo "5. My Borrowed Books"
         echo "6. Check Fine"
         echo "7. View History"
-        echo "8. Logout"
+        echo "8. Write Review"
+        echo "9. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -66,12 +69,50 @@ student_menu() {
             5) view_borrowed_books ;;
             6) student_fine ;;
             7) view_student_history ;;
-            8) echo "Logging out..."; break ;;
+            8) write_review ;;
+            9) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
 }
 
+# Write Review 
+write_review() {
+
+    echo "Enter Book ID:"
+    read book_id
+
+    echo "Write your review:"
+    read review
+
+    echo "$student_id|$book_id|$review" >> database/reviews.txt
+
+    echo "Review added successfully!"
+
+}
+view_reviews() {
+
+    echo ""
+    echo "====== BOOK REVIEWS ======"
+
+    if [ ! -f database/reviews.txt ] || [ ! -s database/reviews.txt ]; then
+        echo "No reviews available."
+        return
+    fi
+
+    while IFS="|" read student book review
+    do
+        echo "-----------------------------"
+        echo "Student: $student"
+        echo "Book ID: $book"
+        echo "Review: $review"
+    done < database/reviews.txt
+
+}
+
+
+# Program Start
+main_menu
 
 # Main Menu
 main_menu() {

@@ -7,6 +7,8 @@ source book.sh
 source borrow.sh
 source fine.sh
 source history.sh
+source review.sh
+source avg_rating.sh
 
 
 # Admin Menu 
@@ -23,7 +25,9 @@ admin_menu() {
         echo "6. View Borrowed Books"
         echo "7. View Overdue Books"
         echo "8. View Reviews"
-        echo "9. Logout"
+        echo "9. Average Ratings"
+        echo "10. View Top Rated Book"
+        echo "11. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -36,7 +40,9 @@ admin_menu() {
             6) view_borrowed_books ;;
             7) admin_overdue_list ;;
             8) view_reviews ;;
-            9) echo "Logging out..."; break ;;
+            9) avg_rating ;;
+            10) top_rated_book ;;
+            11) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
@@ -76,39 +82,6 @@ student_menu() {
     done
 }
 
-# Write Review 
-write_review() {
-
-    echo "Enter Book ID:"
-    read book_id
-
-    echo "Write your review:"
-    read review
-
-    echo "$student_id|$book_id|$review" >> database/reviews.txt
-
-    echo "Review added successfully!"
-
-}
-view_reviews() {
-
-    echo ""
-    echo "====== BOOK REVIEWS ======"
-
-    if [ ! -f database/reviews.txt ] || [ ! -s database/reviews.txt ]; then
-        echo "No reviews available."
-        return
-    fi
-
-    while IFS="|" read student book review
-    do
-        echo "-----------------------------"
-        echo "Student: $student"
-        echo "Book ID: $book"
-        echo "Review: $review"
-    done < database/reviews.txt
-
-}
 
 
 # Program Start

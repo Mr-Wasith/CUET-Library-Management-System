@@ -1,9 +1,6 @@
 1001|1|5|Very helpful book for understanding machine learning basics
-2204026|3|5|Very helpful book for learning machine learning concepts
 2204036|2|4|Good explanations and examples
 2204056|1|4|Easy to understand for beginners
 2204048|4|4|Useful reference for data science students
 2204070|5|5|Clear concepts and practical examples
-2204026|3|4|Great for concept!
-2204026|3|1|not a good book at all!
 2204026|4|3|actually not bad!!

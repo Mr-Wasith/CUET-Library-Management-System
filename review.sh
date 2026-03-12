@@ -7,12 +7,17 @@ write_review() {
     read -p "Rating (1-5): " rating
     read -p "Write Review: " review
 
-    # Append review to file
-    printf "%s|%s|%s|%s\n" "$CURRENT_STUDENT" "$bid" "$rating" "$review" >> "$REVIEW_FILE"
+    if grep -q "^$CURRENT_STUDENT|$bid|" "$REVIEW_FILE"; then
+        echo "You already reviewed this book!"
+        return
+    fi
 
-    echo "Review and Rating Added Successfully!"
+    echo "$CURRENT_STUDENT|$bid|$rating|$review" >> "$REVIEW_FILE"
+
+    echo "Review added successfully!"
+
 }
-
+#admin
 view_reviews() {
 
     if [ ! -s "$REVIEW_FILE" ]; then
@@ -32,4 +37,32 @@ view_reviews() {
         echo "$student | $book_name | $rating / 5 | $review"
 
     done < "$REVIEW_FILE"
+}
+# student can only see their own reviews 
+my_reviews() {
+
+    echo "====== MY REVIEWS ======"
+
+    result=$(grep "^$CURRENT_STUDENT|" "$REVIEW_FILE")
+
+    if [ -z "$result" ]; then
+        echo "No reviews found."
+    else
+        echo "StudentID | BookID | Rating | Review"
+        echo "$result"
+    fi
+
+}
+# delete review(admin)
+delete_review() {
+
+    read -p "Student ID: " sid
+    read -p "Book ID: " bid
+
+    awk -F'|' -v s="$sid" -v b="$bid" '
+    !( $1==s && $2==b )
+    ' "$REVIEW_FILE" > temp && mv temp "$REVIEW_FILE"
+
+    echo "Review deleted successfully!"
+
 }

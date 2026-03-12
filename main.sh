@@ -9,6 +9,7 @@ source fine.sh
 source history.sh
 source review.sh
 source avg_rating.sh
+source recommend.sh
 
 
 # Admin Menu 
@@ -27,7 +28,8 @@ admin_menu() {
         echo "8. View Reviews"
         echo "9. Average Ratings"
         echo "10. View Top Rated Book"
-        echo "11. Logout"
+        echo "11. Delete Review"
+        echo "12. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -42,7 +44,8 @@ admin_menu() {
             8) view_reviews ;;
             9) avg_rating ;;
             10) top_rated_book ;;
-            11) echo "Logging out..."; break ;;
+            11) delete_review ;;
+            12) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
@@ -63,7 +66,9 @@ student_menu() {
         echo "6. Check Fine"
         echo "7. View History"
         echo "8. Write Review"
-        echo "9. Logout"
+        echo "9. My Reviews"
+        echo "10. Get Book Recommendations"
+        echo "11. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -76,7 +81,9 @@ student_menu() {
             6) student_fine ;;
             7) view_student_history ;;
             8) write_review ;;
-            9) echo "Logging out..."; break ;;
+            9) my_reviews ;;
+            10) recommend_books ;;
+            11) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done

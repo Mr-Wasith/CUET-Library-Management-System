@@ -6,7 +6,7 @@ admin_login() {
     read -sp "Password: " pass
     echo
 
-    if grep -q "^$user|$pass$" "$ADMIN_FILE"; then
+    if awk -F'|' -v u="$user" -v p="$pass" '$1==u && $2==p' "$ADMIN_FILE" | grep -q .; then
         echo "Admin Login Successful"
         return 0
     else
@@ -20,7 +20,7 @@ student_login() {
     read -sp "Password: " pass
     echo
 
-    if grep -q "^$sid|.*|$pass$" "$STUDENT_FILE"; then
+    if awk -F'|' -v id="$sid" -v pw="$pass" '$1==id && $3==pw' "$STUDENT_FILE" | grep -q .; then
         CURRENT_STUDENT="$sid"
         echo "Login Successful"
         return 0

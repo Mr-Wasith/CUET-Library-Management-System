@@ -59,6 +59,19 @@ delete_review() {
     read -p "Student ID: " sid
     read -p "Book ID: " bid
 
+    # check if Book ID exists
+    if ! grep -q "^$bid|" "$BOOK_FILE"; then
+        echo "Invalid Book ID!"
+        return
+    fi
+
+    # check if review exists
+    if ! grep -q "^$sid|$bid|" "$REVIEW_FILE"; then
+        echo "Review not found!"
+        return
+    fi
+
+    # delete review
     awk -F'|' -v s="$sid" -v b="$bid" '
     !( $1==s && $2==b )
     ' "$REVIEW_FILE" > temp && mv temp "$REVIEW_FILE"

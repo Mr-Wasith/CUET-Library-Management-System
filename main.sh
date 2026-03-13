@@ -13,6 +13,8 @@ source recommend.sh
 source analytics.sh
 source leaderboard.sh
 source popularity_graph.sh
+source frqntt_book.sh
+source availability_alert.sh
 
 
 
@@ -36,7 +38,9 @@ admin_menu() {
         echo "12. Student Analytics"
         echo "13. Leaderboard"
         echo "14. View Popularity Graphs"
-        echo "15. Logout"
+        echo "15. View Frequently Borrowed Books"
+        echo "16. Low Stock Alert"
+        echo "17. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -55,7 +59,9 @@ admin_menu() {
             12) student_analytics ;;
             13) leaderboard ;;
             14) popularity_graph ;;
-            15) echo "Logging out..."; break ;;
+            15) frqntt_books ;;
+            16) availability_alert ;;
+            17) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done

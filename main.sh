@@ -10,6 +10,10 @@ source history.sh
 source review.sh
 source avg_rating.sh
 source recommend.sh
+source analytics.sh
+source leaderboard.sh
+source popularity_graph.sh
+
 
 
 # Admin Menu 
@@ -29,7 +33,10 @@ admin_menu() {
         echo "9. Average Ratings"
         echo "10. View Top Rated Book"
         echo "11. Delete Review"
-        echo "12. Logout"
+        echo "12. Student Analytics"
+        echo "13. Leaderboard"
+        echo "14. View Popularity Graphs"
+        echo "15. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -45,7 +52,10 @@ admin_menu() {
             9) avg_rating ;;
             10) top_rated_book ;;
             11) delete_review ;;
-            12) echo "Logging out..."; break ;;
+            12) student_analytics ;;
+            13) leaderboard ;;
+            14) popularity_graph ;;
+            15) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
@@ -68,7 +78,8 @@ student_menu() {
         echo "8. Write Review"
         echo "9. My Reviews"
         echo "10. Get Book Recommendations"
-        echo "11. Logout"
+        echo "11. Leaderboard"
+        echo "12. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -83,7 +94,8 @@ student_menu() {
             8) write_review ;;
             9) my_reviews ;;
             10) recommend_books ;;
-            11) echo "Logging out..."; break ;;
+            11) leaderboard ;;
+            12) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done

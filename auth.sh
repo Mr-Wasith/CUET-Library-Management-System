@@ -29,3 +29,50 @@ student_login() {
         return 1
     fi
 }
+
+admin_signup() {
+    read -p "New Admin Username: " user
+
+   
+    if grep -q "^$user|" "$ADMIN_FILE"; then
+        echo "Username already exists!"
+        return 1
+    fi
+
+    read -sp "Set Password: " pass
+    echo
+    read -sp "Confirm Password: " pass2
+    echo
+
+    if [ "$pass" != "$pass2" ]; then
+        echo "Passwords do not match!"
+        return 1
+    fi
+
+    echo "$user|$pass" >> "$ADMIN_FILE"
+    echo "Admin account created successfully!"
+}
+
+student_signup() {
+    read -p "Enter Student ID: " sid
+
+   
+    if grep -q "^$sid|" "$STUDENT_FILE"; then
+        echo "Student ID already registered!"
+        return 1
+    fi
+
+    read -p "Enter Full Name: " name
+    read -sp "Set Password: " pass
+    echo
+    read -sp "Confirm Password: " pass2
+    echo
+
+    if [ "$pass" != "$pass2" ]; then
+        echo "Passwords do not match!"
+        return 1
+    fi
+
+    echo "$sid|$name|$pass" >> "$STUDENT_FILE"
+    echo "Student account created successfully!"
+}

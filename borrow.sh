@@ -1,8 +1,20 @@
 BOOK_FILE="database/books.txt"
 BORROW_FILE="database/borrow.txt"
 HISTORY_FILE="database/history.txt"
+MAX_BORROW=3
 
 borrow_book() {
+
+      current_count=$(awk -F'|' -v sid="$CURRENT_STUDENT" '
+$1==sid && $5=="Borrowed" {count++}
+END{print count+0}' "$BORROW_FILE")
+
+if [ "$current_count" -ge "$MAX_BORROW" ]; then
+    echo "Borrow limit reached! (Max: $MAX_BORROW books)"
+    return
+fi 
+
+
     read -p "Book ID: " bid
 
     available=$(awk -F'|' -v id="$bid" '$1==id {print $5}' "$BOOK_FILE")

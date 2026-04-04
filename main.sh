@@ -15,6 +15,7 @@ source leaderboard.sh
 source popularity_graph.sh
 source frqntt_book.sh
 source availability_alert.sh
+source clearance.sh
 
 
 
@@ -40,7 +41,10 @@ admin_menu() {
         echo "14. View Popularity Graphs"
         echo "15. View Frequently Borrowed Books"
         echo "16. Low Stock Alert"
-        echo "17. Logout"
+        echo "17. View Clearance Requests"
+        echo "18. Approve Clearance"
+        echo "19. Reject Clearance"
+        echo "20. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -61,7 +65,10 @@ admin_menu() {
             14) popularity_graph ;;
             15) frqntt_books ;;
             16) availability_alert ;;
-            17) echo "Logging out..."; break ;;
+            17) view_clearance_requests ;;
+            18) approve_clearance ;;
+            19) reject_clearance ;;
+            20) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
@@ -85,7 +92,9 @@ student_menu() {
         echo "9. My Reviews"
         echo "10. Get Book Recommendations"
         echo "11. Leaderboard"
-        echo "12. Logout"
+        echo "13. Apply for Clearance"
+        echo "14. Check Clearance Status"
+        echo "15. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -101,7 +110,9 @@ student_menu() {
             9) my_reviews ;;
             10) recommend_books ;;
             11) leaderboard ;;
-            12) echo "Logging out..."; break ;;
+            13) apply_clearance ;;
+            14) check_clearance_status ;;
+            15) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
@@ -121,8 +132,10 @@ main_menu() {
         echo "   CUET Library Management System"
         echo "================================="
         echo "1. Admin Login"
-        echo "2. Student Login"
-        echo "3. Exit"
+        echo "2. Admin Signup"
+        echo "3. Student Login"
+        echo "4. Student Signup"
+        echo "5. Exit"
         echo "================================="
         read -p "Enter choice: " choice
 
@@ -133,27 +146,26 @@ main_menu() {
                     admin_menu
                 else
                     echo "Login failed!"
-                fi
-                ;;
+                fi;;
             2)
+                admin_signup;;
+            3)
                 student_login
                 if [ $? -eq 0 ]; then
                     student_menu
                 else
                     echo "Login failed!"
-                fi
-                ;;
-            3)
+                fi;;
+            4)
+                student_signup;;
+            5)
                 echo "Exiting system..."
-                exit 0
-                ;;
+                exit 0;;
             *)
-                echo "Invalid choice!"
-                ;;
+                echo "Invalid choice!";;
         esac
     done
 }
-
 
 # Program Start
 main_menu

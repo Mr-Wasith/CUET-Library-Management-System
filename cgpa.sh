@@ -1,12 +1,9 @@
-#!/bin/bash
-
 calculate_student_cgpa() {
     echo "========================================="
     echo "       CGPA Calculator"
     echo "========================================="
     echo ""
 
-    
     read -p "Enter number of courses: " num_courses
 
 

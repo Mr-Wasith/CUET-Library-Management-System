@@ -1,94 +1,112 @@
 # CUET Library Management System
 
-A terminal-based Library Management System built with Shell Script for the CUET Operating System Lab. This project provides an admin and student interface for managing books, borrow/return operations, reviews, analytics, clearance, and notifications.
+A terminal-based Library Management System built with shell scripts for the CUET Operating System Lab. The system offers both admin and student workflows for managing library operations, student services, and academic tools.
 
 ## 📌 Project Overview
 
-This system simulates a university library workflow on the terminal. It supports:
+This application simulates a university library management system in the terminal. It supports:
 
-- Admin login/signup and student login/signup
-- Book inventory management
+- Admin and student login/signup
+- Book inventory management (add, remove, update, search, view)
 - Borrowing and returning books
-- Student fine tracking
-- Review and rating management
-- Analytics, leaderboard, and popular book tracking
-- Clearance request processing
-- Library notices
+- Borrow history tracking
+- Fine calculation on overdue returns
+- Student reviews and average ratings
+- Book recommendation support
+- Analytics, leaderboards, and popularity reports
+- Clearance request workflows
+- Noticeboard posting, viewing, searching, and deletion
+- CGPA calculation utility
 
-## ⭐ Key Features
+## ⭐ Full Feature Set
 
-- Admin dashboard for library operations
-- Student dashboard for borrowing, returning, and tracking history
-- Book search and inventory controls
-- Review submission and average rating calculations
-- Frequently borrowed books and low-stock alerts
-- Clearance request approval/rejection flow
-- Notice posting and viewing
-- Planned/optional utilities: Leave request handling and CGPA calculator
+### Admin Features
 
-## 🧩 Current Modules
+- Add, remove, and update book quantities
+- View all books and search inventory
+- View borrowed books and overdue records
+- View and delete book reviews
+- Compute average book ratings and top-rated books
+- View student analytics and library leaderboard
+- Display popularity graphs and frequently borrowed books
+- Receive low stock alerts for books
+- Handle student clearance requests (view, approve, reject)
+- Post, view, delete, and search notices on the noticeboard
+
+### Student Features
+
+- View all books and search for books
+- Borrow and return books
+- View currently borrowed books and history
+- Check fines for overdue returns
+- Write reviews and view personal reviews
+- Get book recommendations
+- View leaderboard rankings
+- View noticeboard announcements
+- Apply for clearance and check clearance status
+- Calculate CGPA for coursework
+
+## 🧩 Project Modules
 
 - `main.sh` — application entrypoint and menu navigation
-- `auth.sh` — admin and student authentication
-- `book.sh` — add, remove, update, search, and view books
-- `borrow.sh` — borrow and return book logic
-- `fine.sh` — fine calculation for overdue returns
-- `review.sh` — write and manage book reviews
-- `avg_rating.sh` — compute average book ratings
-- `recommend.sh` — recommend books to students
-- `analytics.sh` — student analytics and activity summaries
-- `leaderboard.sh` — top students and popular books ranking
-- `popularity_graph.sh` — popularity graphs for books
-- `frqntt_book.sh` — frequently borrowed books report
-- `availability_alert.sh` — low stock alert for books
-- `clearance.sh` — clearance application and admin approval
-- `notice.sh` — library notice posting and display
+- `auth.sh` — admin and student authentication flow
+- `book.sh` — book inventory operations
+- `borrow.sh` — borrow/return processing
+- `fine.sh` — overdue fine calculation
+- `history.sh` — borrow/return history viewing
+- `review.sh` — review creation and listing
+- `avg_rating.sh` — average rating and top-rated book reports
+- `recommend.sh` — book recommendation engine
+- `analytics.sh` — student analytics summaries
+- `leaderboard.sh` — leaderboard generation
+- `popularity_graph.sh` — popularity graph reporting
+- `frqntt_book.sh` — frequently borrowed book report
+- `availability_alert.sh` — low stock alert generation
+- `clearance.sh` — clearance request handling
+- `cgpa.sh` — CGPA calculator utility
+- `noticeboard.sh` — noticeboard management
 
-## 📝 Planned Additions
+## 💾 Data Storage
 
-The project also includes planned support for:
+The `database/` folder stores application data as plain text records:
 
-- Leave request application and approval flow (`leave.sh`)
-- CGPA calculator utility (`cgpa.sh`)
+- `admin.txt` — admin usernames and passwords
+- `students.txt` — registered student records
+- `books.txt` — library book inventory
+- `borrow.txt` — active borrow records
+- `history.txt` — completed borrow/return history
+- `reviews.txt` — student book reviews
+- `clearance.txt` — clearance applications
+- `noticeboard.txt` — posted notices
 
-If these files are not currently available in the repository, they can be added as companion scripts to extend functionality.
+## 🚀 Requirements
 
-## 💻 Requirements
+- Bash-compatible shell (`bash` on Windows, WSL, Git Bash, or Linux)
+- Standard shell utilities: `awk`, `grep`, `bc`, `date`
+- Keep all project files in the same directory structure
 
-- GNU/Linux or Windows with a Bash-compatible shell
-- `bash`, `awk`, `grep`, and `bc`
-- Project files must remain in the same directory
-
-## 🚀 How to Run
+## ▶️ How to Run
 
 1. Open a terminal in the project folder.
-2. Make `main.sh` executable (if required):
+2. If required, make `main.sh` executable:
    ```bash
    chmod +x main.sh
    ```
-3. Run the system:
+3. Start the application:
    ```bash
    ./main.sh
    ```
-4. Follow the on-screen menu to use admin or student features.
-
-## 📁 Data Storage
-
-The `database/` folder stores text-based records:
-
-- `admin.txt` — admin credentials
-- `students.txt` — student profiles
-- `books.txt` — book inventory
-- `borrow.txt` — borrowed book records
-- `history.txt` — borrow/return history
-- `reviews.txt` — student reviews
-- `clearance.txt` — student clearance requests
-- `notices.txt` — library notices
+4. Use the on-screen menu to choose Admin or Student actions.
 
 ## 🙌 Contribution
 
-You can extend the system by adding new shell modules and menu entries. For example, add `leave.sh` and `cgpa.sh` scripts and wire them into `main.sh` to support leave request processing and CGPA calculation.
+Extend this project by adding new menu options and supporting modules. Recommended enhancements:
+
+- Improve validation and error handling
+- Add book categories and advanced search filters
+- Add student profile editing
+- Add reports for fines collected and books returned
 
 ## 📄 License
 
-This project is for academic use and lab practice. Feel free to adapt it for learning and local experimentation.
+This project is intended for academic use and lab practice. Feel free to adapt it for learning and experimentation.

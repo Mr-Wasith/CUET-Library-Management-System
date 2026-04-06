@@ -17,7 +17,6 @@ source frqntt_book.sh
 source availability_alert.sh
 source clearance.sh
 source cgpa.sh
-source leave.sh
 source noticeboard.sh
 
 # Admin Menu
@@ -45,16 +44,11 @@ admin_menu() {
         echo "17. View Clearance Requests"
         echo "18. Approve Clearance"
         echo "19. Reject Clearance"
-        echo "20. Apply for Leave"
-        echo "21. View Leave Applications"
-        echo "22. Approve Leave"
-        echo "23. Reject Leave"
-        echo "24. Set Leave Approver"
-        echo "25. Post Notice"
-        echo "26. View Noticeboard"
-        echo "27. Delete Notice"
-        echo "28. Search Notices"
-        echo "29. Logout"
+        echo "20. Post Notice"
+        echo "21. View Noticeboard"
+        echo "22. Delete Notice"
+        echo "23. Search Notices"
+        echo "24. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -78,16 +72,11 @@ admin_menu() {
             17) view_clearance_requests ;;
             18) approve_clearance ;;
             19) reject_clearance ;;
-            20) apply_for_leave ;;
-            21) view_all_leaves ;;
-            22) approve_leave ;;
-            23) reject_leave ;;
-            24) set_leave_approver ;;
-            25) post_notice ;;
-            26) view_all_notices ;;
-            27) delete_notice ;;
-            28) search_notices ;;
-            29) echo "Logging out..."; break ;;
+            20) post_notice ;;
+            21) view_all_notices ;;
+            22) delete_notice ;;
+            23) search_notices ;;
+            24) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done

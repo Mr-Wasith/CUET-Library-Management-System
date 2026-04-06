@@ -1,4 +1,4 @@
-1|Machine Learning|Aurelien|2|2
+1|Machine Learning|Aurelien|10|10
 2|Introduction to Algorithms|Thomas H. Cormen|10|10
 3|Intro to Python|ABCD|10|10
 4|Operating System Concepts|Silberschatz|5|5
@@ -37,4 +37,4 @@
 37|Grokking Algorithms|Aditya Bhargava|6|6
 38|Linux Command Line and Shell Scripting Bible|Richard Blum|5|5
 39|Site Reliability Engineering|Betsy Beyer|4|4
-40|Software Engineering|Ian Sommerville|6|6
+40|Software Engineering|Ian Sommerville|6|5

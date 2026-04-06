@@ -24,3 +24,6 @@
 2204070 borrowed 5 on 2026-02-20
 2204070 returned 5 on 2026-02-27
 2204070 borrowed 1 on 2026-03-03
+2204070 borrowed Book 40 on 2026-04-06
+2204070 borrowed Book 40 on 2026-04-06
+2204070 returned Book 40 on 2026-04-06

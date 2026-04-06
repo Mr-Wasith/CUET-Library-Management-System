@@ -1,15 +1,11 @@
-#!/bin/bash
-
 # Noticeboard System
 
 NOTICEBOARD_FILE="database/noticeboard.txt"
 
-# Create noticeboard file if it doesn't exist
 if [ ! -f "$NOTICEBOARD_FILE" ]; then
     touch "$NOTICEBOARD_FILE"
 fi
 
-# Function to post a notice
 post_notice() {
     echo ""
     echo "========== POST NOTICE =========="
@@ -18,11 +14,9 @@ post_notice() {
     read -p "Enter notice title: " title
     read -p "Enter notice content: " content
 
-    # Get current timestamp
     posted_date=$(date '+%Y-%m-%d %H:%M:%S')
-    notice_id=$(date +%s)  # Use timestamp as unique ID
+    notice_id=$(date +%s)
 
-    # Append to noticeboard file
     echo "$notice_id|$poster_username|$title|$content|$posted_date" >> "$NOTICEBOARD_FILE"
 
     echo ""
@@ -31,7 +25,6 @@ post_notice() {
     echo ""
 }
 
-# Function to view all notices
 view_all_notices() {
     echo ""
     echo "========== NOTICEBOARD =========="
@@ -44,7 +37,7 @@ view_all_notices() {
     fi
 
     found=0
-    # Display notices in reverse chronological order (newest first)
+
     while IFS='|' read notice_id poster_username title content posted_date
     do
         echo "Title: $title"
@@ -63,7 +56,6 @@ view_all_notices() {
     echo ""
 }
 
-# Function to view recent notices (last 5)
 view_recent_notices() {
     echo ""
     echo "========== RECENT NOTICES =========="
@@ -96,7 +88,6 @@ view_recent_notices() {
     echo ""
 }
 
-# Function to delete a notice (admin only)
 delete_notice() {
     echo ""
     echo "========== DELETE NOTICE =========="
@@ -142,7 +133,6 @@ delete_notice() {
     echo ""
 }
 
-# Function to search notices by keyword
 search_notices() {
     echo ""
     echo "========== SEARCH NOTICES =========="

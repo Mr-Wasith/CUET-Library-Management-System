@@ -78,6 +78,7 @@ The `database/` folder stores application data as plain text records:
 - `reviews.txt` — student book reviews
 - `clearance.txt` — clearance applications
 - `noticeboard.txt` — posted notices
+- `grades.txt` — Grade Calculation
 
 ## 🚀 Requirements
 
@@ -90,7 +91,7 @@ The `database/` folder stores application data as plain text records:
 1. Open a terminal in the project folder.
 2. If required, make `main.sh` executable:
    ```bash
-   chmod +x main.sh
+   chmod +x *.sh
    ```
 3. Start the application:
    ```bash

@@ -106,7 +106,3 @@ Extend this project by adding new menu options and supporting modules. Recommend
 - Add book categories and advanced search filters
 - Add student profile editing
 - Add reports for fines collected and books returned
-
-## 📄 License
-
-This project is intended for academic use and lab practice. Feel free to adapt it for learning and experimentation.

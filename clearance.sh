@@ -2,50 +2,56 @@ CLEARANCE_FILE="database/clearance.txt"
 BORROW_FILE="database/borrow.txt"
 
 apply_clearance() {
-
     echo ""
     echo "====== APPLY FOR CLEARANCE ======"
 
-    found=0
-    while IFS="|" read sid status
-    do
-        if [ "$sid" = "$CURRENT_STUDENT" ]; then
-            found=1
-            if [ "$status" = "Approved" ]; then
-                echo "Your clearance is already APPROVED!"
-            else
-                echo "You already applied. Current Status: $status"
+    # 1. Check for Borrowed Books FIRST
+    has_borrowed_books=0
+
+    if [ -f "$BORROW_FILE" ]; then
+        # Format: sid|bid|bdate|ddate|status
+        while IFS="|" read -r sid bid bdate ddate status
+        do
+            if [ "$sid" = "$CURRENT_STUDENT" ] && [ "$status" = "Borrowed" ]; then
+                has_borrowed_books=1
+                break
             fi
-            return
-        fi
-    done < "$CLEARANCE_FILE"
+        done < "$BORROW_FILE"
+    fi
 
-    unreturned=0
-    while IFS="|" read sid bid bdate ddate status
-    do
-        if [ "$sid" = "$CURRENT_STUDENT" ] && [ "$status" = "Borrowed" ]; then
-            unreturned=1
-        fi
-    done < "$BORROW_FILE"
-
-    if [ "$unreturned" -eq 1 ]; then
-        echo "Cannot apply! You have unreturned books."
-        echo "Please return all books first."
+    # 2. Block if any borrowed books exist
+    if [ "$has_borrowed_books" -eq 1 ]; then
+        echo "Return the book first"
         return
     fi
 
+    # 3. Check if the student has already applied or is already approved
+    if [ -f "$CLEARANCE_FILE" ]; then
+        while IFS="|" read -r sid status
+        do
+            if [ "$sid" = "$CURRENT_STUDENT" ]; then
+                if [ "$status" = "Approved" ]; then
+                    echo "Your clearance is already APPROVED!"
+                else
+                    echo "You already applied. Current Status: $status"
+                fi
+                return
+            fi
+        done < "$CLEARANCE_FILE"
+    fi
+
+    # 4. If all checks pass, submit the request
     echo "$CURRENT_STUDENT|Pending" >> "$CLEARANCE_FILE"
     echo "Clearance application submitted!"
     echo "Please wait for admin approval."
 }
 
 check_clearance_status() {
-
     echo ""
     echo "====== MY CLEARANCE STATUS ======"
 
     found=0
-    while IFS="|" read sid status
+    while IFS="|" read -r sid status
     do
         if [ "$sid" = "$CURRENT_STUDENT" ]; then
             found=1
@@ -71,7 +77,6 @@ check_clearance_status() {
 }
 
 view_clearance_requests() {
-
     echo ""
     echo "====== CLEARANCE REQUESTS ======"
     echo ""
@@ -79,7 +84,7 @@ view_clearance_requests() {
     echo "--------------------"
 
     found=0
-    while IFS="|" read sid status
+    while IFS="|" read -r sid status
     do
         if [ -n "$sid" ]; then
             echo "$sid | $status"
@@ -95,13 +100,12 @@ view_clearance_requests() {
 }
 
 approve_clearance() {
-
     view_clearance_requests
 
     read -p "Enter Student ID to approve: " sid
 
     found=0
-    while IFS="|" read s status
+    while IFS="|" read -r s status
     do
         if [ "$s" = "$sid" ]; then
             found=1
@@ -113,7 +117,7 @@ approve_clearance() {
         return
     fi
 
-    while IFS="|" read s status
+    while IFS="|" read -r s status
     do
         if [ "$s" = "$sid" ]; then
             echo "$s|Approved"
@@ -128,13 +132,12 @@ approve_clearance() {
 }
 
 reject_clearance() {
-
     view_clearance_requests
 
     read -p "Enter Student ID to reject: " sid
 
     found=0
-    while IFS="|" read s status
+    while IFS="|" read -r s status
     do
         if [ "$s" = "$sid" ]; then
             found=1
@@ -146,7 +149,7 @@ reject_clearance() {
         return
     fi
 
-    while IFS="|" read s status
+    while IFS="|" read -r s status
     do
         if [ "$s" = "$sid" ]; then
             echo "$s|Rejected"

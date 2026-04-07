@@ -37,4 +37,3 @@
 37|Grokking Algorithms|Aditya Bhargava|6|6
 38|Linux Command Line and Shell Scripting Bible|Richard Blum|5|5
 39|Site Reliability Engineering|Betsy Beyer|4|4
-40|Software Engineering|Ian Sommerville|6|5

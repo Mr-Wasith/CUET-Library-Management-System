@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # CUET Library Management System
 
 
@@ -59,7 +58,7 @@ admin_menu() {
             3) update_book ;;
             4) view_books ;;
             5) search_book ;;
-            6) view_borrowed_books ;;
+            6) admin_view_borrowed_books ;;
             7) admin_overdue_list ;;
             8) view_reviews ;;
             9) avg_rating ;;
@@ -130,7 +129,6 @@ student_menu() {
         esac
     done
 }
-
 
 # Main Menu
 main_menu() {

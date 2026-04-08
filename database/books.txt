@@ -1,4 +1,4 @@
-1|Machine Learning|Aurelien|10|9
+1|Machine Learning|Aurelien|10|8
 2|Introduction to Algorithms|Thomas H. Cormen|10|10
 3|Intro to Python|ABCD|10|10
 4|Operating System Concepts|Silberschatz|5|5
@@ -32,7 +32,7 @@
 32|Operating Systems: Three Easy Pieces|Remzi H. Arpaci-Dusseau|6|6
 33|Computer Networking: A Top-Down Approach|James F. Kurose|7|7
 34|Learning SQL|Alan Beaulieu|5|5
-35|Python Crash Course|Eric Matthes|6|6
+35|Python Crash Course|Eric Matthes|6|5
 36|Cracking the Coding Interview|Gayle Laakmann McDowell|5|5
 37|Grokking Algorithms|Aditya Bhargava|6|6
 38|Linux Command Line and Shell Scripting Bible|Richard Blum|5|5

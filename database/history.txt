@@ -31,3 +31,5 @@
 2204024 returned Book 1 on 2026-04-07
 2204022 borrowed Book 1 on 2026-04-08
 2204024 borrowed Book 20 on 2026-04-08
+2204022 borrowed Book 1 on 2026-04-08
+2204022 borrowed Book 35 on 2026-04-08

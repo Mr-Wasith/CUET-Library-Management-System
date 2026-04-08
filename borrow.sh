@@ -12,7 +12,7 @@ END{print count+0}' "$BORROW_FILE")
 if [ "$current_count" -ge "$MAX_BORROW" ]; then
     echo "Borrow limit reached! (Max: $MAX_BORROW books)"
     return
-fi 
+fi
 
 
     read -p "Book ID: " bid
@@ -78,5 +78,24 @@ view_borrowed_books() {
     else
         echo "StudentID | BookID | BorrowDate | DueDate | Status"
         echo "$result"
+    fi
+}
+
+admin_view_borrowed_books() {
+    found=0
+
+    echo "StudentID | BookID | BorrowDate | DueDate | Status"
+    echo "===================================================="
+
+    while IFS='|' read sid bid bdate ddate status
+    do
+        if [ "$status" = "Borrowed" ]; then
+            echo "$sid | $bid | $bdate | $ddate | $status"
+            found=1
+        fi
+    done < "$BORROW_FILE"
+
+    if [ $found -eq 0 ]; then
+        echo "No borrowed books found."
     fi
 }

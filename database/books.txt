@@ -1,4 +1,4 @@
-1|Machine Learning|Aurelien|10|10
+1|Machine Learning|Aurelien|10|9
 2|Introduction to Algorithms|Thomas H. Cormen|10|10
 3|Intro to Python|ABCD|10|10
 4|Operating System Concepts|Silberschatz|5|5
@@ -17,7 +17,7 @@
 17|Modern Operating Systems|Andrew Tanenbaum|5|5
 18|Compilers: Principles, Techniques and Tools|Alfred V. Aho|4|4
 19|Data Science from Scratch|Joel Grus|6|6
-20|Computer Architecture: A Quantitative Approach|John L. Hennessy|5|5
+20|Computer Architecture: A Quantitative Approach|John L. Hennessy|5|4
 21|Structure and Interpretation of Computer Programs|Harold Abelson|5|5
 22|Introduction to the Theory of Computation|Michael Sipser|6|6
 23|The Mythical Man-Month|Frederick P. Brooks Jr.|4|4

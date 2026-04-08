@@ -1,5 +1,5 @@
 2204023|Approved
-2204022|Approved
+2204022|Rejected
 2204036|Pending
-2204024|Rejected
+2204024|Approved
 2204056|Rejected

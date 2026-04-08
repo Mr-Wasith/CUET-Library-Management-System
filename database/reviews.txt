@@ -2,4 +2,3 @@
 2204056|1|4|Easy to understand for beginners
 2204048|4|4|Useful reference for data science students
 2204070|5|5|Clear concepts and practical examples
-2204026|4|3|actually not bad!!

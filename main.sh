@@ -132,10 +132,6 @@ student_menu() {
 }
 
 
-
-# Program Start
-main_menu
-
 # Main Menu
 main_menu() {
     while true

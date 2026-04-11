@@ -117,18 +117,26 @@ delete_notice() {
     fi
 
     line_num=0
+    deleted=0
     temp_file=$(mktemp)
 
     while IFS='|' read notice_id poster_username title content posted_date
     do
         ((line_num++))
-        if [ $line_num -ne $delete_num ]; then
+        if [ $line_num -eq $delete_num ]; then
+            deleted=1
+        else
             echo "$notice_id|$poster_username|$title|$content|$posted_date" >> "$temp_file"
         fi
     done < "$NOTICEBOARD_FILE"
 
-    mv "$temp_file" "$NOTICEBOARD_FILE"
-    echo "Notice deleted successfully!"
+    if [ $deleted -eq 1 ]; then
+        mv "$temp_file" "$NOTICEBOARD_FILE"
+        echo "Notice deleted successfully!"
+    else
+        rm -f "$temp_file"
+        echo "Invalid notice id"
+    fi
     echo "===================================="
     echo ""
 }

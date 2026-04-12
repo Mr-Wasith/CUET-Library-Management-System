@@ -25,6 +25,11 @@ update_book() {
     read -p "Book ID: " id
     read -p "New Quantity: " qty
 
+    if ! grep -q "^$id|" "$BOOK_FILE"; then
+        echo "No book found with this Book ID."
+        return
+    fi
+
     awk -F'|' -v id="$id" -v qty="$qty" \
     'BEGIN{OFS="|"} $1==id{$4=qty;$5=qty}1' \
     "$BOOK_FILE" > temp && mv temp "$BOOK_FILE"

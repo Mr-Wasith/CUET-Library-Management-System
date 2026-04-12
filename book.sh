@@ -6,6 +6,11 @@ add_book() {
     read -p "Author: " author
     read -p "Quantity: " qty
 
+    if grep -q "^$id|" "$BOOK_FILE"; then
+        echo "Book ID already exists! Please use a unique ID."
+        return
+    fi
+
     echo "$id|$title|$author|$qty|$qty" >> "$BOOK_FILE"
     echo "Book Added!"
 }

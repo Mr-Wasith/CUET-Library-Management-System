@@ -1,4 +1,4 @@
-1|Machine Learning|Aurelien|10|8
+1|Machine Learning|Aurelien|10|9
 2|Introduction to Algorithms|Thomas H. Cormen|10|10
 3|Intro to Python|ABCD|10|10
 4|Operating System Concepts|Silberschatz|5|5
@@ -17,7 +17,7 @@
 17|Modern Operating Systems|Andrew Tanenbaum|5|5
 18|Compilers: Principles, Techniques and Tools|Alfred V. Aho|4|4
 19|Data Science from Scratch|Joel Grus|6|6
-20|Computer Architecture: A Quantitative Approach|John L. Hennessy|5|4
+20|Computer Architecture: A Quantitative Approach|John L. Hennessy|5|5
 21|Structure and Interpretation of Computer Programs|Harold Abelson|5|5
 22|Introduction to the Theory of Computation|Michael Sipser|6|6
 23|The Mythical Man-Month|Frederick P. Brooks Jr.|4|4
@@ -29,11 +29,12 @@
 29|Hands-On Machine Learning with Scikit-Learn and TensorFlow|Aurelien Geron|5|5
 30|Deep Learning with Python|Francois Chollet|6|6
 31|Distributed Systems|Maarten van Steen|5|5
-32|Operating Systems: Three Easy Pieces|Remzi H. Arpaci-Dusseau|6|6
+32|Operating Systems: Three Easy Pieces|Remzi H. Arpaci-Dusseau|6|5
 33|Computer Networking: A Top-Down Approach|James F. Kurose|7|7
 34|Learning SQL|Alan Beaulieu|5|5
-35|Python Crash Course|Eric Matthes|6|5
+35|Python Crash Course|Eric Matthes|6|6
 36|Cracking the Coding Interview|Gayle Laakmann McDowell|5|5
 37|Grokking Algorithms|Aditya Bhargava|6|6
 38|Linux Command Line and Shell Scripting Bible|Richard Blum|5|5
 39|Site Reliability Engineering|Betsy Beyer|4|4
+40|Operating System Concepts|Silberschatz|20|20

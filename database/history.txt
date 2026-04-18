@@ -33,3 +33,26 @@
 2204024 borrowed Book 20 on 2026-04-08
 2204022 borrowed Book 1 on 2026-04-08
 2204022 borrowed Book 35 on 2026-04-08
+2204022 returned Book 1 on 2026-04-12
+2204022 returned Book 35 on 2026-04-12
+2204024 borrowed Book 40 on 2026-04-12
+2204024 returned Book 40 on 2026-04-12
+2204024 returned Book 20 on 2026-04-12
+2204022 borrowed Book 40 on 2026-04-18
+2204022 borrowed Book 1 on 2026-04-18
+2204022 requested Book 32 on 2026-04-18
+2204022 requested Book 16 on 2026-04-18
+2204022 returned Book 40 on 2026-04-18
+2204022 returned Book 1 on 2026-04-18
+2204022 borrow request approved for Book 32 on 2026-04-18
+2204022 borrow request rejected for Book 16 on 2026-04-18
+2204022 requested Book 33 on 2026-04-18
+2204026 requested Book 11 on 2026-04-18
+2204026 requested Book 12 on 2026-04-18
+2204026 requested Book 13 on 2026-04-18
+2204026 borrow request approved for Book 11 on 2026-04-18
+2204026 borrow request approved for Book 12 on 2026-04-18
+2204026 borrow request approved for Book 13 on 2026-04-18
+2204026 returned Book 11 on 2026-04-18
+2204026 returned Book 12 on 2026-04-18
+2204026 returned Book 13 on 2026-04-18

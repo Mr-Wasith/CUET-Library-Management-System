@@ -41,14 +41,17 @@ admin_menu() {
         echo "14. View Popularity Graphs"
         echo "15. View Frequently Borrowed Books"
         echo "16. Low Stock Alert"
-        echo "17. View Clearance Requests"
-        echo "18. Approve Clearance"
-        echo "19. Reject Clearance"
-        echo "20. Post Notice"
-        echo "21. View Noticeboard"
-        echo "22. Delete Notice"
-        echo "23. Search Notices"
-        echo "24. Logout"
+        echo "17. View Borrow Requests"
+        echo "18. Approve Borrow Request"
+        echo "19. Reject Borrow Request"
+        echo "20. View Clearance Requests"
+        echo "21. Approve Clearance"
+        echo "22. Reject Clearance"
+        echo "23. Post Notice"
+        echo "24. View Noticeboard"
+        echo "25. Delete Notice"
+        echo "26. Search Notices"
+        echo "27. Logout"
         echo "==============================="
         read -p "Enter choice: " choice
 
@@ -69,14 +72,17 @@ admin_menu() {
             14) popularity_graph ;;
             15) frqntt_books ;;
             16) availability_alert ;;
-            17) view_clearance_requests ;;
-            18) approve_clearance ;;
-            19) reject_clearance ;;
-            20) post_notice ;;
-            21) view_all_notices ;;
-            22) delete_notice ;;
-            23) search_notices ;;
-            24) echo "Logging out..."; break ;;
+            17) view_borrow_requests ;;
+            18) approve_borrow_request ;;
+            19) reject_borrow_request ;;
+            20) view_clearance_requests ;;
+            21) approve_clearance ;;
+            22) reject_clearance ;;
+            23) post_notice ;;
+            24) view_all_notices ;;
+            25) delete_notice ;;
+            26) search_notices ;;
+            27) echo "Logging out..."; break ;;
             *) echo "Invalid choice!" ;;
         esac
     done
@@ -91,7 +97,7 @@ student_menu() {
         echo "========= STUDENT MENU ========="
         echo "1. View All Books"
         echo "2. Search Book"
-        echo "3. Borrow Book"
+        echo "3. Apply to Borrow Book"
         echo "4. Return Book"
         echo "5. My Borrowed Books"
         echo "6. Check Fine"
